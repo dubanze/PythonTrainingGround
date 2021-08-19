@@ -135,60 +135,112 @@
 # input("Naciśnij klawisz, aby zakończyć.")
 
 # MODYFIKACJA WYMIESZANYCH LITER
+# import random
+
+# # utwórz sekwencję słów do wyboru
+# WORDS = ("python",
+#          "anagram",
+#          "łatwy",
+#          "skomplikowany",
+#          "odpowiedź",
+#          "ksylofon")
+
+# HINTS = {"python": "gatunek weza, w ktorym progamujesz",
+#          "anagram": "wyraz powstajacy w wyniku poprzestawiania liter",
+#          "łatwy": "kiedy test nie jest trudny, tylko...",
+#          "skomplikowany": "inaczej bardzo zlozony",
+#          "odpowiedź": "zwykle probujemy ja od kogos uzyskac",
+#          "ksylofon": "gra sie na nim cymbalkami"}
+# word = random.choice(WORDS)
+# correct = word
+# jumble = ""  # pusty lancuch na pomieszane slowo
+# hinttrigger = 0
+
+# while word:
+#     position = random.randrange(len(word))
+#     jumble += word[position]
+#     word = word[:position] + word[(position + 1):]
+
+# # rozpocznij grę
+# print(
+#     """
+#            Witaj w grze 'Wymieszane litery'!
+        
+#    Uporządkuj litery, aby odtworzyć prawidłowe słowo.
+# (Aby zakończyć zgadywanie, naciśnij klawisz Enter bez podawania odpowiedzi.)
+# """
+# )
+# print("Zgadnij, jakie to słowo:", jumble, "\nJeśli potrzebujesz podpowiedzi, wpisz słowo help.")
+
+# guess = input("\nTwoja odpowiedź: ")
+# while guess != correct and guess != "":
+#     if guess == "help":
+#         hinttrigger = 1
+#         print(HINTS[correct])
+#         guess = input("\nTwoja odpowiedź: ")
+#     elif guess != correct:
+#         print("Niestety, to nie to słowo.")
+#         guess = input("Twoja odpowiedź: ")
+
+# if guess == correct and hinttrigger == 0:
+#     print("\nElegancko, zgadłeś bez korzystania z podpowiedzi!\nWygrałeś uścisk ręki prezesa!")
+# elif guess == correct and hinttrigger == 1:
+#     print("\nNom, spoczko, zgadłeś, ale wykorzystałeś do tego podpowiedź.\nNie otrzymujesz dodatkowych punktów!")
+# elif guess == "":
+#     print("\nSzkoda, ze nie podałeś zadnej odpowiedzi.")    
+    
+# print("Dziękuję za udział w grze.")
+
+# input("\nAby zakończyć program, naciśnij klawisz Enter.")
+
 import random
+from typing import Counter
 
-# utwórz sekwencję słów do wyboru
-WORDS = ("python",
-         "anagram",
-         "łatwy",
+WORDS = ("samochód",
+         "krzesło",
+         "masakra",
          "skomplikowany",
-         "odpowiedź",
-         "ksylofon")
+         "wiertarka",
+         "materac")
 
-HINTS = {"python": "gatunek weza, w ktorym progamujesz",
-         "anagram": "wyraz powstajacy w wyniku poprzestawiania liter",
-         "łatwy": "kiedy test nie jest trudny, tylko...",
-         "skomplikowany": "inaczej bardzo zlozony",
-         "odpowiedź": "zwykle probujemy ja od kogos uzyskac",
-         "ksylofon": "gra sie na nim cymbalkami"}
 word = random.choice(WORDS)
 correct = word
-jumble = ""  # pusty lancuch na pomieszane slowo
-hinttrigger = 0
 
-while word:
-    position = random.randrange(len(word))
-    jumble += word[position]
-    word = word[:position] + word[(position + 1):]
+print("Słowo, które masz odgadnąć, zawiera " + str(len(correct)) + " liter.")
 
-# rozpocznij grę
-print(
-    """
-           Witaj w grze 'Wymieszane litery'!
-        
-   Uporządkuj litery, aby odtworzyć prawidłowe słowo.
-(Aby zakończyć zgadywanie, naciśnij klawisz Enter bez podawania odpowiedzi.)
-"""
-)
-print("Zgadnij, jakie to słowo:", jumble, "\nJeśli potrzebujesz podpowiedzi, wpisz słowo help.")
 
-guess = input("\nTwoja odpowiedź: ")
-while guess != correct and guess != "":
-    if guess == "help":
-        hinttrigger = 1
-        print(HINTS[correct])
-        guess = input("\nTwoja odpowiedź: ")
-    elif guess != correct:
-        print("Niestety, to nie to słowo.")
-        guess = input("Twoja odpowiedź: ")
+print("Mozesz pięciokrotnie podać jakąś literę, a ja powiem Ci ile razy \
+    znajduje się ona w tym słowie. Potem będziesz musiał je zgadnąć.")
 
-if guess == correct and hinttrigger == 0:
-    print("\nElegancko, zgadłeś bez korzystania z podpowiedzi!\nWygrałeś uścisk ręki prezesa!")
-elif guess == correct and hinttrigger == 1:
-    print("\nNom, spoczko, zgadłeś, ale wykorzystałeś do tego podpowiedź.\nNie otrzymujesz dodatkowych punktów!")
-elif guess == "":
-    print("\nSzkoda, ze nie podałeś zadnej odpowiedzi.")    
-    
-print("Dziękuję za udział w grze.")
+letter = input("Podaj literę: ").lower()
 
-input("\nAby zakończyć program, naciśnij klawisz Enter.")
+if word.count(letter) > 0:
+    print("Tak, litera " + letter + " znajduje się w tym słowie.")
+else:
+    print("Nie, litera " + letter + " nie znajduje się w tym słowie.")
+
+# if letter != "":
+#     print("Litera " + letter + " występuje w tym słowie " + str(word.count(letter)) + " razy.")
+
+tries = 1
+
+while letter != "" and tries < 5:    
+    letter = input("Mozesz podać następną: ").lower()
+    if word.count(letter) > 0:
+        print("Tak, litera " + letter + " znajduje się w tym słowie.")
+    else:
+        print("Nie, litera " + letter + " nie znajduje się w tym słowie.")
+    # print("Litera " + letter + " występuje w tym słowie " + str(word.count(letter)) + " razy.")
+    tries += 1
+
+if letter == "":
+    print("Szkoda, ze nie podałeś zadnej litery.")
+
+if tries == 5:
+    usrword = input("Odgadnij teraz proszę jakie to słowo?: ")
+    if usrword.lower() == correct:
+        print("Brawo! Zgadłeś.")
+    elif usrword.lower() != correct:
+        print("Niestety, spróbuj ponownie!")
+
+input("Naciśnij Enter, aby zakończyć.")
