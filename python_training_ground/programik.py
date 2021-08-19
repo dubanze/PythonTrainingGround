@@ -15,7 +15,7 @@
 
 # total = print("Całkowite wydatki: ", sum(intlist))
 
-### PROGRAM WROZBY 
+# PROGRAM WROZBY
 # import random as r
 
 # fortunes = []
@@ -39,7 +39,7 @@
 # input("Naciś enter, zeby skończyć, igzde.")
 
 
-### RZUCANIE MONETA I LICZENIE "ORLOW" I "RESZEK"
+# RZUCANIE MONETA I LICZENIE "ORLOW" I "RESZEK"
 # from random import choice
 
 # throws = []
@@ -55,7 +55,7 @@
 
 # input("Naciś enter, zeby skończyć, igzde.")
 
-### GRA ZGADNIJ LICZBĘ W OKREŚLONEJ ILOŚCI PROB
+# GRA ZGADNIJ LICZBĘ W OKREŚLONEJ ILOŚCI PROB
 # import random
 
 # genint = random.randint(1,100)
@@ -107,15 +107,88 @@
 #         sleep(5)
 #     elif liczba == chooseint:
 #         print("Zgadlem! Ta liczba to " + str(chooseint) + ", a zajelo mi to " + str(iterator) + " prob!")
-#         break    
+#         break
 # else:
 #     print("Nie udalo mi sie zgadnac.")
 
-# input("Nacisnij klawisz aby zakonczyc.")
+# PROGRAM LICZACY ZA UŻYTKOWNIKA
+# startint = int(input("Podaj liczbę początkową: "))
+# endint = int(input("Podaj liczbę końcową: "))
+# step = int(input("Podaj krok z jakim mam liczyć: "))
 
-#####
-  
+# print("Wypisuję liczby zgodnie z podanym zakresem: \n")
+# for i in range(startint, endint+1, step):
+#     print(i)
 
+# input("Naciśnij klawisz, aby zakończyć.")
 
+# ##### PROGRAM ODWRACAJACY LANCUCH ZNAKOW
+# usrword = input("Podaj słowo: ")
+# end = len(usrword)
+# newword = ""
 
+# for letter in usrword:
+#     end -= 1
+#     newword = newword + usrword[end]
 
+# print(newword)
+# input("Naciśnij klawisz, aby zakończyć.")
+
+# MODYFIKACJA WYMIESZANYCH LITER
+import random
+
+# utwórz sekwencję słów do wyboru
+WORDS = ("python",
+         "anagram",
+         "łatwy",
+         "skomplikowany",
+         "odpowiedź",
+         "ksylofon")
+
+HINTS = {"python": "gatunek weza, w ktorym progamujesz",
+         "anagram": "wyraz powstajacy w wyniku poprzestawiania liter",
+         "łatwy": "kiedy test nie jest trudny, tylko...",
+         "skomplikowany": "inaczej bardzo zlozony",
+         "odpowiedź": "zwykle probujemy ja od kogos uzyskac",
+         "ksylofon": "gra sie na nim cymbalkami"}
+word = random.choice(WORDS)
+correct = word
+jumble = ""  # pusty lancuch na pomieszane slowo
+hinttrigger = 0
+
+while word:
+    position = random.randrange(len(word))
+    jumble += word[position]
+    word = word[:position] + word[(position + 1):]
+
+# rozpocznij grę
+print(
+    """
+           Witaj w grze 'Wymieszane litery'!
+        
+   Uporządkuj litery, aby odtworzyć prawidłowe słowo.
+(Aby zakończyć zgadywanie, naciśnij klawisz Enter bez podawania odpowiedzi.)
+"""
+)
+print("Zgadnij, jakie to słowo:", jumble, "\nJeśli potrzebujesz podpowiedzi, wpisz słowo help.")
+
+guess = input("\nTwoja odpowiedź: ")
+while guess != correct and guess != "":
+    if guess == "help":
+        hinttrigger = 1
+        print(HINTS[correct])
+        guess = input("\nTwoja odpowiedź: ")
+    elif guess != correct:
+        print("Niestety, to nie to słowo.")
+        guess = input("Twoja odpowiedź: ")
+
+if guess == correct and hinttrigger == 0:
+    print("\nElegancko, zgadłeś bez korzystania z podpowiedzi!\nWygrałeś uścisk ręki prezesa!")
+elif guess == correct and hinttrigger == 1:
+    print("\nNom, spoczko, zgadłeś, ale wykorzystałeś do tego podpowiedź.\nNie otrzymujesz dodatkowych punktów!")
+elif guess == "":
+    print("\nSzkoda, ze nie podałeś zadnej odpowiedzi.")    
+    
+print("Dziękuję za udział w grze.")
+
+input("\nAby zakończyć program, naciśnij klawisz Enter.")
