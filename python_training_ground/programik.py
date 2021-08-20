@@ -165,7 +165,7 @@
 # print(
 #     """
 #            Witaj w grze 'Wymieszane litery'!
-        
+
 #    Uporządkuj litery, aby odtworzyć prawidłowe słowo.
 # (Aby zakończyć zgadywanie, naciśnij klawisz Enter bez podawania odpowiedzi.)
 # """
@@ -187,13 +187,13 @@
 # elif guess == correct and hinttrigger == 1:
 #     print("\nNom, spoczko, zgadłeś, ale wykorzystałeś do tego podpowiedź.\nNie otrzymujesz dodatkowych punktów!")
 # elif guess == "":
-#     print("\nSzkoda, ze nie podałeś zadnej odpowiedzi.")    
-    
+#     print("\nSzkoda, ze nie podałeś zadnej odpowiedzi.")
+
 # print("Dziękuję za udział w grze.")
 
 # input("\nAby zakończyć program, naciśnij klawisz Enter.")
 
-##### GRA W ZGADYWANIE SLOWA NA PODSTAWIE ILOSCI LITER
+# GRA W ZGADYWANIE SLOWA NA PODSTAWIE ILOSCI LITER
 # import random
 # from typing import Counter
 
@@ -225,7 +225,7 @@
 
 # tries = 1
 
-# while letter != "" and tries < 5:    
+# while letter != "" and tries < 5:
 #     letter = input("Mozesz podać następną: ").lower()
 #     if word.count(letter) > 0:
 #         print("Tak, litera " + letter + " znajduje się w tym słowie.")
@@ -246,7 +246,7 @@
 
 # input("Naciśnij Enter, aby zakończyć.")
 
-##### PROGRAM WYPISUJACY LOSOWO SLOWA, A NASTEPNIE USUWAJACY JE
+# PROGRAM WYPISUJACY LOSOWO SLOWA, A NASTEPNIE USUWAJACY JE
 # import random
 
 # WORDS = ["samochód",
@@ -264,5 +264,71 @@
 #     del WORDS[index]
 #     length -= 1
 
+# input("Naciśnij Enter, aby zakończyć.")
+
+
+# ##### PROGRAM KREATOR POSTACI
+# from time import sleep
+
+# attributes = {"siła" : 0,
+#               "zdrowie" : 0,
+#               "mądrość" : 0,
+#               "zręczność" : 0}
+
+# availpoints = 30
+
+# def printCurrentAttrState():
+#     print("Stan wszystkich atrybutów w tym momencie: ")
+#     print("ATRYBUT\t\tPUNKTY")
+#     for i in attributes:
+#         print(i + "\t\t" + str(attributes[i]))
+#     sleep(2)
+
+# def printOptions():
+#     print("Wybierz opcję z menu ponizej, aby rozpocząć:\n")
+#     print("1 - dodanie punktów do atrybutu\n")
+#     print("2 - odjęcie punktów do atrybutu\n")
+#     print("3 - wyświetl obecny stan wszystkich atrybutów\n")
+#     print("0 - wyjście z kreatora\n")
+
+# def printAvailablePoints():
+#     print("Obecna ilość punktów w puli to: " + str(availpoints))
+
+# print("Witaj w kreatorze postaci!\n")
+# printOptions()
+
+# option = None
+
+# while option != "0":
+#     option = input("Co chcesz teraz zrobić?: ")
+#     if option == "1" and availpoints > 0:
+#         attribute = input("Podaj atrybut na który chcesz przeznaczyć punkty: ")
+#         points = int(input("Podaj ile punktów chcesz przeznaczyć z dostępnej puli: "))
+#         attributes[attribute] += points
+#         availpoints -= points
+#         print("Zwiększyłeś ilość punktów atrybytu " + attribute + " o " + str(points) + " punktów.\n" )
+#         sleep(1)
+#         printAvailablePoints()
+#         sleep(3)
+#         printOptions()
+#     elif option == "1" and availpoints <= 0:
+#         print("Brak wolnych punktów! Mozesz je odjąć od któregoś z atrybutów i spróbować ponownie.")
+#         sleep(2)
+#         printOptions()
+#     elif option == "2":
+#         attribute = input("Podaj atrybut od którego chcesz odjąć punkty: ")
+#         points = int(input("Podaj ile punktów chcesz odjąć od atrybutu i dodać z powrotem do puli: "))
+#         attributes[attribute] -= points
+#         availpoints += points
+#         print("Odjąłeś " +  str(points) + " punktów od atrybytu " + attribute + ".\n")
+#         sleep(1)
+#         printAvailablePoints()
+#         sleep(3)
+#         printOptions()
+#     elif option == "3":
+#         printCurrentAttrState()
+#         printOptions()
+
+# print("Do zobaczenia!")
 # input("Naciśnij Enter, aby zakończyć.")
 
