@@ -332,3 +332,73 @@
 # print("Do zobaczenia!")
 # input("Naciśnij Enter, aby zakończyć.")
 
+#### PROGRAM KTO JEST TWOIM OJCEM?
+#### UDOSKONALONY O PODAWANIE KTO JEST DZIADKIEM
+# from time import sleep
+
+
+# familydictionary = {"Marian Trep": "Sławomir Trep",
+#                     "Łukasz Nowak": "Paweł Nowak",
+#                     "Mateusz Kizio": "Piotr Kizio",
+#                     "Krzysztof Sordyl": "Marcin Sordyl",
+#                     "Piotr Kizio": "Zenon Kizio"}
+
+
+# def printOptions():
+#     print("Wybierz opcję z menu ponizej, aby rozpocząć:\n")
+#     print("1 - dodanie nowej lub aktualizacja istniejącej pary syn-ojciec\n")
+#     print("2 - usunięcie pary syn-ojciec\n")
+#     print("3 - informacja na temat dziadka syna\n")
+#     print("0 - zakończenie programu\n")
+
+
+# choice = None
+
+# print("Witaj w programie 'Kto jest Twoim tatą?'")
+# printOptions()
+
+# while choice != "0":
+#     choice = input("Co chcesz teraz zrobić?: ")
+#     if choice == "1":
+#         newson = input(
+#             "Podaj imię i nazwisko syna, które chcesz dodać lub zmodyfikować: ")
+#         newfather = input(
+#             "Podaj imię i nazwisko ojca, które chcesz dodać lub zmodyfikować: ")
+#         familydictionary[newson] = newfather
+#         print("Para dodana!")
+#         sleep(2)
+#         printOptions()
+#     if choice == "2":
+#         pairtodel = input(
+#             "Podaj imię i nazwisko syna z pary, którą chcesz usunąć: ")
+#         if pairtodel in familydictionary:
+#             del familydictionary[pairtodel]
+#             print("Para usunięta!")
+#             sleep(2)
+#             printOptions()
+#         else:
+#             print("Para z takim synem nie istnieje!")
+#             sleep(2)
+#             printOptions()
+#     if choice == "3":
+#         whoisgrandfather = input(
+#             "Podaj imię i nazwisko syna, aby dowiedzieć się kto jest jego dziadkiem: ")
+#         if whoisgrandfather in familydictionary:
+#             print("Ojcem " + whoisgrandfather + " jest " +
+#                   familydictionary[whoisgrandfather], end=",")
+#             newson = familydictionary[whoisgrandfather]
+#             if newson in familydictionary:
+#                 print(" a jego dziadkiem jest " + familydictionary[newson] + "\n")
+#                 sleep(2)
+#                 printOptions()
+#             else:
+#                 print(" ale niestety nie posiadam informacji na temat jego dziadka.\n")
+#                 sleep(2)
+#                 printOptions()
+#         else:
+#             print("Przykro mi, nie posiadam informacji na temat tego syna.\n")
+#             sleep(2)
+#             printOptions()
+
+
+# print("Do widzenia!")
